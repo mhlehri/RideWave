@@ -15,17 +15,17 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const navListMenuItems = [
   {
-    title: "My-services",
+    title: "My Services",
   },
   {
-    title: "Add-services",
+    title: "Add Services",
   },
   {
-    title: "My-schedules",
+    title: "My Schedules",
   },
 ];
 
@@ -37,7 +37,7 @@ function NavListMenu() {
       to={`/${title}`}
       key={key}
       className={({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? "active" : ""
+        isPending ? "pending" : isActive ? "underline" : ""
       }
     >
       <menu className="flex items-center gap-3 rounded-lg">
@@ -110,7 +110,7 @@ function NavList() {
       <NavLink
         to="/services"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""
+          isPending ? "pending" : isActive ? "underline" : ""
         }
       >
         <Typography as="a" href="#" className="font-medium">
@@ -141,11 +141,10 @@ export function NavbarWithMegaMenu() {
         <div className="flex items-center justify-between">
           <Typography
             as="a"
-            href="#"
             variant="h6"
-            className="mr-4 cursor-pointer py-1.5 lg:ml-2"
+            className="mr-4 cursor-pointer py-1.5 lg:ml-2 text-2xl"
           >
-            Material Tailwind
+            RideWave
           </Typography>
           <div className="hidden lg:block">
             <NavList />
