@@ -80,7 +80,7 @@ function NavListMenu() {
             </a>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden bg-[#6c9db7] text-[#164863] max-w-screen-xl rounded-xl lg:block">
+        <MenuList className="hidden bg-[#9BBEC8] text-[#164863] max-w-screen-xl rounded-xl lg:block">
           <ul className="outline-none outline-0">{renderItems}</ul>
         </MenuList>
       </Menu>
@@ -136,7 +136,7 @@ export function NavbarWithMegaMenu() {
   }, []);
 
   return (
-    <Navbar className="bg-[#427D9D] text-[#164863] max-w-full border-none  rounded-none py-2 px-4 lg:px-8 lg:py-4">
+    <Navbar className="bg-[#9BBEC8] text-[#164863] max-w-full border-none  rounded-none py-2 px-4 lg:px-8 lg:py-4">
       <div className="mx-auto max-w-screen-xl  shadow-none  border-none">
         <div className="flex items-center justify-between">
           <Typography
