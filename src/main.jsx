@@ -10,6 +10,11 @@ import Home from "./Pages/Home/Home";
 import Error from "./Pages/Error/Error";
 import { SignIn } from "./Pages/Signin/Signin.jsx";
 import { SignUp } from "./Pages/Signup/Signup.jsx";
+import SignleService from "./Pages/SignleService/SignleService.jsx";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Manage_Services from "./Pages/Manage-Services Page/Manage_Services";
+import My_schedule from "./Pages/My-schedule Page/My_schedule";
+import createService from "./Pages/Add-A-Service Page/Add_Service.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +37,38 @@ const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/servicesid",
+        element: (
+          <PrivateRoute>
+            <SignleService></SignleService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/Manage Services",
+        element: (
+          <PrivateRoute>
+            <Manage_Services></Manage_Services>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/My Schedules",
+        element: (
+          <PrivateRoute>
+            <My_schedule></My_schedule>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/Add Services",
+        element: (
+          <PrivateRoute>
+            <createService></createService>
+          </PrivateRoute>
+        ),
       },
     ],
   },

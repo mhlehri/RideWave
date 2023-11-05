@@ -5,6 +5,12 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 
+import Lottie from "lottie-react";
+import create from "../../assets/car1.json";
+
+const Create = () => {
+  return <Lottie style={{ margin: "auto" }} animationData={create} />;
+};
 export function FAQ() {
   const [open, setOpen] = React.useState(0);
   const [alwaysOpen, setAlwaysOpen] = React.useState(true);
@@ -15,10 +21,7 @@ export function FAQ() {
   return (
     <div className="flex flex-col lg:flex-row gap-12 my-16 lg:my-56 w-3/4 lg:w-full mx-auto">
       <div className="lg:w-1/2">
-        <img
-          src="https://i.ibb.co/sRMbCcN/online-ordering-taxi-car-rent-sharing-using-service-mobile-application-333239-96-removebg-preview.png"
-          alt=""
-        />
+        <Create></Create>
       </div>
 
       <div className="lg:w-1/2">

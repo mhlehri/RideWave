@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 
 import { Search } from "../../Components/Search/Search";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -57,10 +58,11 @@ const Services = () => {
                   <span className="text-[#0091ff]">Savar, Dhaka</span>
                 </p>
               </div>
-
-              <Button className="bg-[#164863] text-[8px] lg:text-base">
-                View Detail
-              </Button>
+              <Link to="/servicesid" className="">
+                <Button className="bg-[#164863] text-[8px] lg:text-base mt-4">
+                  View Detail
+                </Button>
+              </Link>
             </CardBody>
           </Card>
         </div>

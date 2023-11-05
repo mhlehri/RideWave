@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +11,7 @@ body {
   background-color: #ddf2fd;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  font-family: "Oswald", sans-serif;
 }
 a {
   cursor: pointer;

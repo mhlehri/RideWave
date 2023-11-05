@@ -5,6 +5,7 @@ import {
   Button,
   Rating,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export function ServicesHome() {
   return (
@@ -54,9 +55,11 @@ export function ServicesHome() {
               </p>
             </div>
 
-            <Button className="bg-[#164863] text-[8px] lg:text-base">
-              View Detail
-            </Button>
+            <Link to="/services/:id">
+              <Button className="bg-[#164863] text-[8px] lg:text-base">
+                View Detail
+              </Button>
+            </Link>
           </CardBody>
         </Card>
       </div>

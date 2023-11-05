@@ -20,22 +20,23 @@ import {
   PowerIcon,
 } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const navListMenuItems = [
   {
-    title: "My Services",
+    title: "My Schedules",
   },
   {
     title: "Add Services",
   },
   {
-    title: "My Schedules",
+    title: "Manage Services",
   },
 ];
 
 function NavListMenu() {
+  const { user } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(({ title }, key) => (
@@ -63,29 +64,33 @@ function NavListMenu() {
         placement="bottom"
         allowHover={true}
       >
-        <MenuHandler>
-          <Typography as="div" className="font-medium">
-            <a
-              className="flex items-center gap-2 py-2 pr-4 font-medium cursor-pointer"
-              selected={isMenuOpen || isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen((cur) => !cur)}
-            >
-              DashBoard
-              <ChevronDownIcon
-                strokeWidth={2.5}
-                className={`hidden h-3 w-3 transition-transform lg:block ${
-                  isMenuOpen ? "rotate-180" : ""
-                }`}
-              />
-              <ChevronDownIcon
-                strokeWidth={2.5}
-                className={`block h-3 w-3 transition-transform lg:hidden ${
-                  isMobileMenuOpen ? "rotate-180" : ""
-                }`}
-              />
-            </a>
-          </Typography>
-        </MenuHandler>
+        {user ? (
+          <MenuHandler>
+            <Typography as="div" className="font-medium">
+              <a
+                className="flex items-center gap-2 py-2 pr-4 font-medium cursor-pointer"
+                selected={isMenuOpen || isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen((cur) => !cur)}
+              >
+                DashBoard
+                <ChevronDownIcon
+                  strokeWidth={2.5}
+                  className={`hidden h-3 w-3 transition-transform lg:block ${
+                    isMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
+                <ChevronDownIcon
+                  strokeWidth={2.5}
+                  className={`block h-3 w-3 transition-transform lg:hidden ${
+                    isMobileMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </a>
+            </Typography>
+          </MenuHandler>
+        ) : (
+          ""
+        )}
         <MenuList className="hidden bg-[#9BBEC8] text-[#164863] max-w-screen-xl rounded-xl lg:block">
           <ul className="outline-none outline-0">{renderItems}</ul>
         </MenuList>
@@ -152,7 +157,7 @@ export function NavbarWithMegaMenu() {
           onClick={() =>
             signO()
               .then(() => {
-                toast.success("Successfully Registered!", {
+                toast.success("Successfully Logged Out!", {
                   position: "top-center",
                   autoClose: 2000,
                   hideProgressBar: false,
