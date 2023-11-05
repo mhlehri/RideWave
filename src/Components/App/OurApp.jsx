@@ -1,3 +1,9 @@
+import Lottie from "lottie-react";
+import create from "../../assets/Animation - 1699216024327.json";
+
+const Create = () => {
+  return <Lottie style={{ margin: "auto" }} animationData={create} />;
+};
 const OurApp = () => {
   return (
     <div className="my-8 lg:my-56 w-3/4 mx-auto lg:w-full">
@@ -10,10 +16,7 @@ const OurApp = () => {
       </p>
       <div className="flex items-center flex-col lg:flex-row-reverse gap-16  mx-auto">
         <div className="lg:w-1/2">
-          <img
-            src="https://i.ibb.co/d2LNFLL/63d0f1e9bdaa2-must-have-uber-app-features-removebg-preview.png"
-            alt=""
-          />
+          <Create></Create>
         </div>
         <div className="lg:w-1/2 space-y-4">
           <h2 className="text-2xl lg:text-3xl font-bold underline">

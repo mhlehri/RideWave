@@ -64,7 +64,9 @@ export function ServicesHome() {
         </Card>
       </div>
       <div className="text-center my-20">
-        <Button className="bg-[#164863] lg:text-lg">Show All</Button>
+        <Link to="/services">
+          <Button className="bg-[#164863] lg:text-lg">Show All</Button>
+        </Link>
       </div>
     </div>
   );

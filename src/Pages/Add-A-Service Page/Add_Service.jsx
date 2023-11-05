@@ -7,7 +7,7 @@ const Create = () => {
   return <Lottie style={{ margin: "auto" }} animationData={create} />;
 };
 
-const createService = () => {
+const Add_Service = () => {
   return (
     <div className="my-24 mx-auto px-4">
       <h1 className="my-10 text-4xl text-center">Add Service</h1>
@@ -85,4 +85,4 @@ const createService = () => {
   );
 };
 
-export default createService;
+export default Add_Service;

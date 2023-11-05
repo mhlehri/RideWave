@@ -14,7 +14,7 @@ import SignleService from "./Pages/SignleService/SignleService.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Manage_Services from "./Pages/Manage-Services Page/Manage_Services";
 import My_schedule from "./Pages/My-schedule Page/My_schedule";
-import createService from "./Pages/Add-A-Service Page/Add_Service.jsx";
+import Add_Service from "./Pages/Add-A-Service Page/Add_Service.jsx";
 
 const router = createBrowserRouter([
   {
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         path: "/Add Services",
         element: (
           <PrivateRoute>
-            <createService></createService>
+            <Add_Service></Add_Service>
           </PrivateRoute>
         ),
       },
