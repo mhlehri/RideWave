@@ -7,6 +7,8 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -24,21 +26,27 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, pass);
   };
+  const update = (name, url) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: url,
+    });
+  };
 
   const signInG = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
-  const signOut = () => {
+  const signO = () => {
     setLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
       setLoading(false);
+      setUser(currentUser);
     });
     return () => {
       return unSubscribe();
@@ -48,8 +56,9 @@ const AuthProvider = ({ children }) => {
   const userInfo = {
     signUp,
     signIn,
+    update,
     signInG,
-    signOut,
+    signO,
     loading,
     user,
   };

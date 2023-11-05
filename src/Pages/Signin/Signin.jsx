@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 
 export function SignIn() {
@@ -19,30 +20,29 @@ export function SignIn() {
 
     signIn(email, password)
       .then(() => {
-        // toast.success("Successfully Logged In!", {
-        //   position: "top-center",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "colored",
-        // });
+        toast.success("Successfully Logged In!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         navigate("/");
       })
       .catch((err) =>
-        // toast.error(`${err.message}`, {
-        //   position: "top-center",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "colored",
-        // })
-        console.log(err)
+        toast.error(`${err.message}`, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
       );
   };
   return (
@@ -92,16 +92,16 @@ export function SignIn() {
                 signInG()
                   .then(() => {
                     navigate("/");
-                    // toast.success(`Successfully Logged In!`, {
-                    //   position: "top-center",
-                    //   autoClose: 1500,
-                    //   hideProgressBar: false,
-                    //   closeOnClick: true,
-                    //   pauseOnHover: true,
-                    //   draggable: true,
-                    //   progress: undefined,
-                    //   theme: "colored",
-                    // });
+                    toast.success(`Successfully Logged In!`, {
+                      position: "top-center",
+                      autoClose: 1500,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                    });
                   })
                   .catch()
               }

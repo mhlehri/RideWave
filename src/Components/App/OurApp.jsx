@@ -8,10 +8,10 @@ const OurApp = () => {
         Download the RideWave app for seamless and convenient ride-sharing on
         the go. Enjoy a hassle-free commute with just a few taps.
       </p>
-      <div className="flex items-center flex-col lg:flex-row gap-16  mx-auto">
+      <div className="flex items-center flex-col lg:flex-row-reverse gap-16  mx-auto">
         <div className="lg:w-1/2">
           <img
-            src="https://www.addevice.io/storage/ckeditor/uploads/images/63d0f1e9bdaa2_must.have.uber.app.features.png"
+            src="https://i.ibb.co/d2LNFLL/63d0f1e9bdaa2-must-have-uber-app-features-removebg-preview.png"
             alt=""
           />
         </div>

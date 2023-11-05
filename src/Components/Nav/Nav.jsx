@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   Collapse,
@@ -9,13 +9,19 @@ import {
   Menu,
   MenuHandler,
   MenuList,
+  Avatar,
+  MenuItem,
 } from "@material-tailwind/react";
 import {
   ChevronDownIcon,
   Bars3Icon,
   XMarkIcon,
+  UserCircleIcon,
+  PowerIcon,
 } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const navListMenuItems = [
   {
@@ -93,7 +99,7 @@ function NavListMenu() {
 
 function NavList() {
   return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-[#164863] space-x-3">
+    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-[#164863] lg:space-x-3">
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
@@ -101,9 +107,7 @@ function NavList() {
         }
       >
         <Typography as="a" href="#" className="font-medium">
-          <a className="flex items-center gap-2 py-2 hover:bg-transparent">
-            Home
-          </a>
+          <a className="flex items-center py-2 hover:bg-transparent">Home</a>
         </Typography>
       </NavLink>
 
@@ -114,7 +118,7 @@ function NavList() {
         }
       >
         <Typography as="a" href="#" className="font-medium">
-          <a className="flex items-center gap-2 py-2 hover:bg-transparent">
+          <a className="flex items-center  py-2 hover:bg-transparent">
             Services
           </a>
         </Typography>
@@ -127,6 +131,7 @@ function NavList() {
 
 export function NavbarWithMegaMenu() {
   const [openNav, setOpenNav] = React.useState(false);
+  const { user, signO } = useContext(AuthContext);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -134,7 +139,42 @@ export function NavbarWithMegaMenu() {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+  const profileMenuItems = [
+    {
+      label: `${user?.displayName}`,
+      icon: UserCircleIcon,
+    },
+    {
+      label: (
+        <Button
+          type="button"
+          className="w-full bg-[#164863] flex gap-2 items-center"
+          onClick={() =>
+            signO()
+              .then(() => {
+                toast.success("Successfully Registered!", {
+                  position: "top-center",
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "colored",
+                });
+              })
+              .catch((err) => console.log(err))
+          }
+        >
+          <PowerIcon className="w-4"></PowerIcon>
+          <span>Sign Out</span>
+        </Button>
+      ),
+    },
+  ];
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  const closeMenu = () => setIsMenuOpen(false);
   return (
     <Navbar className="bg-[#9BBEC8] text-[#164863] max-w-full border-none  rounded-none py-2 px-4 lg:px-8 lg:py-4">
       <div className="mx-auto max-w-screen-xl  shadow-none  border-none">
@@ -150,11 +190,60 @@ export function NavbarWithMegaMenu() {
             <NavList />
           </div>
           <div className="hidden gap-2 lg:flex">
-            <Link to="/signIn">
-              <Button className="bg-[#164863]" size="sm">
-                Sign In
-              </Button>
-            </Link>
+            {user ? (
+              <Menu
+                open={isMenuOpen}
+                handler={setIsMenuOpen}
+                placement="bottom-end"
+              >
+                <MenuHandler>
+                  <Button
+                    variant="text"
+                    color="blue-gray"
+                    className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+                  >
+                    <Avatar
+                      variant="circular"
+                      size="sm"
+                      alt="tania andrew"
+                      className="border border-gray-900 p-0.5"
+                      src={user.photoURL}
+                    />
+                    <ChevronDownIcon
+                      strokeWidth={2.5}
+                      className={`h-3 w-3 transition-transform ${
+                        isMenuOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </Button>
+                </MenuHandler>
+                <MenuList className="p-1">
+                  {profileMenuItems.map(({ label }) => {
+                    return (
+                      <MenuItem
+                        key={label}
+                        onClick={closeMenu}
+                        className={`flex items-center gap-2 rounded hover:bg-transparent`}
+                      >
+                        <Typography
+                          as="span"
+                          variant="small"
+                          className="font-normal"
+                        >
+                          {label}
+                        </Typography>
+                      </MenuItem>
+                    );
+                  })}
+                </MenuList>
+              </Menu>
+            ) : (
+              <Link to="/signIn">
+                <Button className="bg-[#164863]" size="sm">
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
           <IconButton
             variant="text"
@@ -171,11 +260,27 @@ export function NavbarWithMegaMenu() {
         <Collapse open={openNav}>
           <NavList />
           <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-            <Link to="/signIn">
-              <Button className="bg-[#164863]" size="sm" fullWidth>
-                Sign In
-              </Button>
-            </Link>
+            {user ? (
+              <div className="flex gap-1 items-center">
+                <img
+                  src={user.photoURL}
+                  className="w-[40px] h-[40px] rounded-full"
+                  alt=""
+                />{" "}
+                <p>{user.displayName}</p>
+                <Link>
+                  <Button className="bg-[#164863]" size="sm" fullWidth>
+                    Sign Out
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <Link to="/signIn">
+                <Button className="bg-[#164863]" size="sm" fullWidth>
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
         </Collapse>
       </div>
