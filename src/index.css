@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body::-webkit-scrollbar {
+  display: none;
+}
 body {
   color: #164863;
   background-color: #ddf2fd;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 a {
   cursor: pointer;

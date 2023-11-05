@@ -15,7 +15,7 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const navListMenuItems = [
   {
@@ -150,9 +150,11 @@ export function NavbarWithMegaMenu() {
             <NavList />
           </div>
           <div className="hidden gap-2 lg:flex">
-            <Button className="bg-[#164863]" size="sm">
-              Sign In
-            </Button>
+            <Link to="/signIn">
+              <Button className="bg-[#164863]" size="sm">
+                Sign In
+              </Button>
+            </Link>
           </div>
           <IconButton
             variant="text"
@@ -169,9 +171,11 @@ export function NavbarWithMegaMenu() {
         <Collapse open={openNav}>
           <NavList />
           <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-            <Button className="bg-[#164863]" size="sm" fullWidth>
-              Sign In
-            </Button>
+            <Link to="/signIn">
+              <Button className="bg-[#164863]" size="sm" fullWidth>
+                Sign In
+              </Button>
+            </Link>
           </div>
         </Collapse>
       </div>

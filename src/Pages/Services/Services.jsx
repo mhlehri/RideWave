@@ -10,8 +10,9 @@ import { Search } from "../../Components/Search/Search";
 
 const Services = () => {
   return (
-    <div className="w-full my-8">
+    <div className="w-full my-20">
       <Search></Search>
+
       <div>
         <div className="my-6 lg:my-12 grid grid-cols-1 md:grid-cols-2 lg:gap-10">
           <Card className="bg-[#]">
@@ -22,9 +23,7 @@ const Services = () => {
               />
             </CardHeader>
             <CardBody className="text-center text-[#164863] space-y-4">
-              <h4 className="text-lg lg:text-2xl font-bold">
-                City Commute Share
-              </h4>
+              <h4 className="text-lg lg:text-2xl font-bold">City Commute</h4>
               <p className=" opacity-70 text-sm md:text-base">
                 Shared rides for convenient daily commuting within the city.
               </p>
@@ -65,7 +64,9 @@ const Services = () => {
             </CardBody>
           </Card>
         </div>
-        <Button></Button>
+        <div className="text-center my-20">
+          <Button className="bg-[#164863] lg:text-lg">Show All</Button>
+        </div>
       </div>
     </div>
   );
