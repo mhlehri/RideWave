@@ -8,14 +8,34 @@ import {
   Rating,
 } from "@material-tailwind/react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SignleService = () => {
   const [size, setSize] = useState(null);
 
   const handleOpen = (value) => setSize(value);
+
+  useEffect(() => {
+    document.title = "RideWave | Service Details";
+  }, []);
   return (
     <div className="my-20">
+      <div className="my-20 flex flex-col items-center">
+        <h2 className="underline font-bold text-3xl mb-3 ">Seller Info</h2>
+        <img
+          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D"
+          width={60}
+          className="rounded-full"
+          alt=""
+        />
+        <h3 className="text-2xl font-medium">
+          <span className="font-bold">Name:</span> MH Lehri
+        </h3>
+
+        <p className="font-medium my-2">
+          <span className="font-bold">Location:</span> Savar, Dhaka
+        </p>
+      </div>
       <div className="flex gap-10">
         <div className="w-1/2">
           <img
@@ -55,22 +75,7 @@ const SignleService = () => {
           </Button>
         </div>
       </div>
-      <div className="mt-20 flex flex-col items-center">
-        <h2 className="underline font-bold text-3xl mb-3 ">Seller Info</h2>
-        <img
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D"
-          width={60}
-          className="rounded-full"
-          alt=""
-        />
-        <h3 className="text-2xl font-medium">
-          <span className="font-bold">Name:</span> MH Lehri
-        </h3>
 
-        <p className="font-medium my-2">
-          <span className="font-bold">Location:</span> Savar, Dhaka
-        </p>
-      </div>
       <Dialog
         open={size === "md"}
         size={size || "md"}

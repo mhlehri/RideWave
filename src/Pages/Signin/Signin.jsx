@@ -2,12 +2,15 @@
 import { Link, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../Component/AuthProvider/AuthProvider";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 
 export function SignIn() {
+  useEffect(() => {
+    document.title = "RideWave | Sign In";
+  }, []);
   const { signIn, signInG } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSignIn = (e) => {

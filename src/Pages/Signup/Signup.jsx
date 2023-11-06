@@ -1,11 +1,5 @@
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-import { useContext } from "react";
+import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./../../Components/AuthProvider/AuthProvider";
@@ -91,6 +85,9 @@ export function SignUp() {
         });
     }
   };
+  useEffect(() => {
+    document.title = "RideWave | Sign Up";
+  }, []);
   return (
     <div className="mx-3">
       <div className="mx-auto max-w-lg my-20 px-6 py-5 dark:bg-blue-gray-100 rounded-lg">
