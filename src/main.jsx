@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import "./index.css";
 import AuthProvider from "./Components/AuthProvider/AuthProvider.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: "/services/:id",
+        path: "/ass/:id",
         element: (
           <PrivateRoute>
             <SignleService></SignleService>
@@ -77,6 +76,7 @@ const router = createBrowserRouter([
 ]);
 
 const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>

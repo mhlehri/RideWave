@@ -62,6 +62,7 @@ export function SignUp() {
             progress: undefined,
             theme: "colored",
           });
+          console.log(res);
 
           update(name, photo)
             .then(
@@ -103,7 +104,7 @@ export function SignUp() {
               <Input
                 type="text"
                 size="lg"
-                name="Name"
+                name="name"
                 placeholder="Name"
                 className=" !border-[#164863] focus:!border-[#164863] "
                 labelProps={{

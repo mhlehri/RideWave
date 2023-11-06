@@ -19,13 +19,11 @@ const Cards = ({ service }) => {
     serviceName,
     servicePrice,
   } = service;
+  console.log(_id);
   return (
     <Card className="bg-[#]">
-      <CardHeader floated={false} className="">
-        <img
-          src="https://ca-times.brightspotcdn.com/dims4/default/c987ae9/2147483647/strip/true/crop/2048x1363+0+0/resize/1200x799!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F51%2F61%2F56bc6796fb9f847b62a830e4a6db%2Fla-167754-me-0908-bikelane1-wjs-jpg-20150706"
-          alt="profile-picture"
-        />
+      <CardHeader floated={false} className="h-32 lg:h-56">
+        <img src={serviceImage} alt="profile-picture" />
       </CardHeader>
       <CardBody className="text-center text-[#164863] space-y-4">
         <h4 className="text-lg lg:text-2xl font-bold">{serviceName}</h4>
@@ -33,9 +31,8 @@ const Cards = ({ service }) => {
         <div className="px-2 flex justify-between items-center gap-4">
           <div className="flex gap-4">
             <img
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D"
-              width={40}
-              className="rounded-full"
+              src={providerImage}
+              className="w-[40px] h-[40px] object-cover object-top rounded-full"
               alt=""
             />
             <div>
@@ -55,7 +52,7 @@ const Cards = ({ service }) => {
             <span className="text-[#0091ff]">{serviceArea}</span>
           </p>
         </div>
-        <Link to={`/services/${_id}`} className="">
+        <Link to={`/ass/${_id}`}>
           <Button className="bg-[#164863] text-[8px] lg:text-base mt-4">
             View Detail
           </Button>
