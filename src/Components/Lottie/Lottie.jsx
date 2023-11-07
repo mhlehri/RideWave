@@ -1,4 +1,5 @@
 import Lottie from "lottie-react";
+
 import hello from "../../assets/xGjdeAdNU0.json";
 import lo from "../../assets/Animation.json";
 import loading from "../../assets/loading.json";
