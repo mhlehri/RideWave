@@ -5,18 +5,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Headroom from "react-headroom";
 import { useEffect, useState } from "react";
-import Lottie from "lottie-react";
-import create from "../src/assets/xGjdeAdNU0.json";
-
-const Create = () => {
-  return <Lottie style={{}} animationData={create} />;
-};
+import { Lo } from "./Components/Lottie/Lottie";
 
 const Welcome = () => {
   return (
     <div className="w-screen h-screen flex items-center flex-col justify-center">
-      <h1 className="text-9xl">Welcome to RideWave!</h1>
-      <Create></Create>
+      <Lo></Lo>
     </div>
   );
 };
@@ -24,15 +18,18 @@ const Welcome = () => {
 const MainLayout = () => {
   const [loading, setLoading] = useState(true);
 
+  const [num, setNum] = useState(3000);
   useEffect(() => {
-    const done = sessionStorage.getItem("loadingDone");
-    if (done) {
-      const timer = setTimeout(() => {
+    if (sessionStorage.getItem("initialLoadDone")) {
+      setLoading(false);
+    } else {
+      setTimeout(() => {
         setLoading(false);
-      }, 2000);
-
-      return () => clearTimeout(timer);
+        sessionStorage.setItem("initialLoadDone", "true");
+        setNum(0);
+      }, num);
     }
+    console.log(num);
   }, []);
 
   if (loading) {

@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Button,
-  Rating,
-} from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Cards from "../Card/Cards";

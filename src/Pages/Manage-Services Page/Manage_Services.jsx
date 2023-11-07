@@ -29,6 +29,9 @@ const Manage_Services = () => {
     },
     queryKey: ["manageServices"],
   });
+  const handleRemove = () => {
+    console.log("sfjdjflksdjfkldjfkldskfljdf");
+  };
   console.log(info);
   const [size, setSize] = useState(null);
   const handleOpen = (value) => setSize(value);
@@ -44,8 +47,6 @@ const Manage_Services = () => {
           {!isPending ? (
             info?.map((myServices, i) => {
               const {
-                _id,
-                providerEmail,
                 providerImage,
                 providerName,
                 serviceArea,
@@ -105,7 +106,10 @@ const Manage_Services = () => {
                         Edit
                       </Button>
 
-                      <Button className="bg-[#164863] text-[8px] lg:text-base mt-4">
+                      <Button
+                        onClick={handleRemove}
+                        className="bg-[#164863] text-[8px] lg:text-base mt-4"
+                      >
                         Remove
                       </Button>
                     </div>

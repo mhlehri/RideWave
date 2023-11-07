@@ -17,11 +17,17 @@ import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 const SignleService = () => {
   const { id } = useParams();
   console.log(id);
+  const currentDate = new Date();
 
+  const nextDayDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+  const nextDayDateValue = nextDayDate.toISOString().split("T")[0];
+
+  const maxDate = new Date(currentDate.getTime() + 15 * 24 * 60 * 60 * 1000);
+  const maxDateValue = maxDate.toISOString().split("T")[0];
   const { data: single, isLoading } = useQuery({
     queryFn: async () => {
       return await axios
-        .get(`http://localhost:5000/ass/${id}`)
+        .get(`http://localhost:5000/details/${id}`)
         .then((response) => {
           return response.data;
         });
@@ -48,6 +54,38 @@ const SignleService = () => {
   useEffect(() => {
     document.title = "RideWave | Service Details";
   }, []);
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const date = e.target.date.value;
+    const location = e.target.location.value;
+    const serviceImage = single.serviceImage;
+    const serviceName = single.serviceName;
+    const userEmail = user.email;
+    const providerEmail = single.providerEmail;
+    const servicePrice = single.servicePrice;
+    const booking = {
+      serviceImage,
+      serviceName,
+      providerEmail,
+      userEmail,
+      servicePrice,
+      date,
+      location,
+      status: "pending",
+    };
+    axios
+      .post("http://localhost:5000/addbookings", booking)
+      .then((response) => {
+        if (response) {
+          handleOpen();
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    console.log("booking", booking);
+  };
   return (
     <div>
       {isLoading ? (
@@ -189,50 +227,60 @@ const SignleService = () => {
               mount: { scale: 1, y: 0 },
               unmount: { scale: 0.9, y: -100 },
             }}
+            className="bg-[#bce8ff]"
           >
             <DialogHeader className="text-[#164863]">
               Confirm Purchase
             </DialogHeader>
             <DialogBody>
-              <form
-                className="space-y-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  console.log(e.target.service.value);
-                }}
-              >
+              <form className="space-y-4" onSubmit={handleAdd}>
                 <Input
                   disabled
                   type="text"
                   name="service"
+                  className=""
                   value={single.serviceName}
                 />
                 <Input disabled type="text" value={single.serviceImage} />
-                <Input disabled type="text" value={single.providerEmail} />
-                <Input disabled type="text" value={user.email} />
-                <Input disabled type="text" value={single.servicePrice} />
+                <Input
+                  disabled
+                  type="text"
+                  value={`${single.providerEmail} (Seller's)`}
+                />
+                <Input disabled type="text" value={`${user.email} (Your)`} />
+                <Input
+                  disabled
+                  type="text"
+                  value={`${single.servicePrice} ($Price)`}
+                />
                 <Input
                   type="date"
+                  required
+                  min={nextDayDateValue}
+                  max={maxDateValue}
+                  name="date"
                   className=" !border-[#164863] focus:!border-[#164863] "
+                  variant="static"
                   labelProps={{
-                    className: "before:content-none after:content-none",
+                    className: "hidden",
                   }}
                 />
                 <Input
                   required
+                  variant="static"
                   type="text"
+                  name="location"
                   placeholder="Your Location"
                   className=" !border-[#164863] focus:!border-[#164863] "
                   labelProps={{
-                    className: "before:content-none after:content-none",
+                    className: "hidden",
                   }}
                 />
-                <Button
-                  type="submit"
-                  className="bg-[#164863] "
-                  onClick={handleOpen}
-                >
+                <Button type="submit" className="bg-[#164863] mr-3 ">
                   <span>Make Purchase</span>
+                </Button>
+                <Button className="bg-orange-900 " onClick={handleOpen}>
+                  <span>Cancel</span>
                 </Button>
               </form>
             </DialogBody>

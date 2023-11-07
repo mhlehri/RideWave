@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Input, Button } from "@material-tailwind/react";
 
 export function Search({ services, setFiltered }) {
@@ -25,10 +25,11 @@ export function Search({ services, setFiltered }) {
             placeholder="search by service name..."
             value={search}
             name="search"
+            variant="static"
             onChange={onChange}
-            className=" !border-[#164863] focus:!border-[#164863] pr-20 "
+            className=" !border-[#164863] focus:!border-[#164863] p-2 "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
 

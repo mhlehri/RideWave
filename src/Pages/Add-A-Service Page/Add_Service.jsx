@@ -1,13 +1,9 @@
 import { Button, Input, Textarea } from "@material-tailwind/react";
 
-import Lottie from "lottie-react";
-import create from "../../assets/kMjupQ85Vn.json";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
-
-const Create = () => {
-  return <Lottie style={{ margin: "auto" }} animationData={create} />;
-};
+import { Add } from "../../Components/Lottie/Lottie";
+import axios from "axios";
 
 const Add_Service = () => {
   useEffect(() => {
@@ -16,15 +12,33 @@ const Add_Service = () => {
   const { user } = useContext(AuthContext);
   const handleAdd = (e) => {
     e.preventDefault();
-    const photo = e.target.photo.value;
-    const SName = e.target.SName.value;
-    const PName = user.displayName;
-    const PEmail = user.email;
-    const PPhoto = user.photoURL;
-    const area = e.target.area.value;
-    const des = e.target.des.value;
-    const userInfo = { photo, SName, PName, PEmail, PPhoto, area, des };
+    const serviceImage = e.target.photo.value;
+    const serviceName = e.target.SName.value;
+    const providerName = user.displayName;
+    const providerEmail = user.email;
+    const providerImage = user.photoURL;
+    const serviceArea = e.target.area.value;
+    const serviceDescription = e.target.des.value;
+    const servicePrice = e.target.price.value;
+    const userInfo = {
+      serviceImage,
+      serviceName,
+      providerName,
+      providerEmail,
+      providerImage,
+      serviceArea,
+      servicePrice,
+      serviceDescription,
+    };
     console.log(userInfo);
+    axios
+      .post("http://localhost:5000/addServices", userInfo)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -35,25 +49,27 @@ const Add_Service = () => {
       "
       >
         <div className="w-1/2">
-          <Create></Create>
+          <Add></Add>
         </div>
         <form className="space-y-4 w-1/2" onSubmit={handleAdd}>
           <Input
             type="text"
+            required
             name="photo"
             placeholder="Image URL"
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: " hidden ",
             }}
           />
           <Input
             type="text"
             name="SName"
+            required
             placeholder="Service Name"
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
           <Input
@@ -63,7 +79,7 @@ const Add_Service = () => {
             value={`${user.displayName} (Your Name)`}
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
           <Input
@@ -73,35 +89,37 @@ const Add_Service = () => {
             value={`${user.email} (Your Email)`}
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
           <Input
             name="price"
-            type="number"
+            type="text"
+            required
             placeholder="price"
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
           <Input
             name="area"
+            required
             type="text"
             placeholder="service area"
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
           <Textarea
             type="text"
             name="des"
-            rows={4}
+            required
             placeholder="Service Description"
             className=" !border-[#164863] focus:!border-[#164863] "
             labelProps={{
-              className: "before:content-none after:content-none",
+              className: "hidden",
             }}
           />
           <Button type="submit" className="bg-[#164863]">

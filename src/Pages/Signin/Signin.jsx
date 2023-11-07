@@ -5,6 +5,7 @@ import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import { Hello } from "../../Components/Lottie/Lottie";
 // import { toast } from "react-toastify";
 
 export function SignIn() {
@@ -49,8 +50,9 @@ export function SignIn() {
       );
   };
   return (
-    <div className="mx-3">
-      <div className="mx-auto max-w-lg my-20 px-6 py-5 dark:bg-blue-gray-100 rounded-lg">
+    <div className="mx-3 flex flex-wrap flex-row-reverse">
+      <Hello className="flex-1"></Hello>
+      <div className="flex-1 my-20 px-6 py-5 dark:bg-blue-gray-100 rounded-lg">
         <Card color="transparent" shadow={false} className="text-[#164863]">
           <Typography variant="h4">Sign In</Typography>
 
