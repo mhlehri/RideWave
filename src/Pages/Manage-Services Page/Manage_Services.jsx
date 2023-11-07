@@ -15,22 +15,57 @@ import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Skeleton } from "../../Components/Skeleton/Skeleton";
+import Swal from "sweetalert2";
 
 const Manage_Services = () => {
   const { user } = useContext(AuthContext);
+  const [remaining, setRemaining] = useState([]);
 
   const { data: info, isPending } = useQuery({
     queryFn: async () => {
       return await axios
         .get(`http://localhost:5000/myServices/${user.email}`)
         .then((response) => {
+          setRemaining(response.data);
           return response.data;
         });
     },
     queryKey: ["manageServices"],
   });
-  const handleRemove = () => {
-    console.log("sfjdjflksdjfkldjfkldskfljdf");
+
+  const handleRemove = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      color: "#164863",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      iconColor: "orange",
+      background: "#ddf2fd",
+      showCancelButton: true,
+      confirmButtonColor: "#164863",
+      cancelButtonColor: "orange",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const remain = remaining.filter((booking) => booking._id !== id);
+        axios
+          .delete(`http://localhost:5000/services/${id}`)
+          .then((res) => {
+            console.log(res);
+            setRemaining(remain);
+          })
+          .catch((err) => console.error(err));
+        Swal.fire({
+          title: "Deleted!",
+          color: "#164863",
+          iconColor: "#164863",
+          background: "#ddf2fd",
+          confirmButtonColor: "#164863",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
   };
   console.log(info);
   const [size, setSize] = useState(null);
@@ -45,8 +80,9 @@ const Manage_Services = () => {
       <div>
         <div className="my-6 lg:my-12 grid grid-cols-1 md:grid-cols-2 lg:gap-10">
           {!isPending ? (
-            info?.map((myServices, i) => {
+            remaining?.map((myServices, i) => {
               const {
+                _id,
                 providerImage,
                 providerName,
                 serviceArea,
@@ -107,7 +143,7 @@ const Manage_Services = () => {
                       </Button>
 
                       <Button
-                        onClick={handleRemove}
+                        onClick={() => handleRemove(_id)}
                         className="bg-[#164863] text-[8px] lg:text-base mt-4"
                       >
                         Remove

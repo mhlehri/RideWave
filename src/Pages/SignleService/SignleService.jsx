@@ -13,6 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Skeleton } from "./../../Components/Skeleton/Skeleton";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignleService = () => {
   const { id } = useParams();
@@ -80,11 +81,22 @@ const SignleService = () => {
         if (response) {
           handleOpen();
         }
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Successfully inserted!",
+            color: "#164863",
+            iconColor: "#164863",
+            background: "#ddf2fd",
+            confirmButtonColor: "#164863",
+            text: "Your booking has been added.",
+            icon: "success",
+          });
+        }
       })
       .catch((error) => {
         console.log(error.message);
       });
-    console.log("booking", booking);
+    // console.log("booking", booking);
   };
   return (
     <div>

@@ -6,10 +6,14 @@ import loading from "../../assets/loading.json";
 import FAQ from "../../assets/car1.json";
 import app from "../../assets/Animation - 1699216024327.json";
 import addProduct from "../../assets/kMjupQ85Vn.json";
+import loadingCar from "../../assets/ivj2xYTFuj.json";
 import hi from "../../assets/Hi.json";
 
 export const Add = () => {
   return <Lottie style={{ margin: "auto" }} animationData={addProduct} />;
+};
+export const LoadingCar = () => {
+  return <Lottie style={{ margin: "auto" }} animationData={loadingCar} />;
 };
 export const Hi = () => {
   return <Lottie style={{ margin: "auto" }} animationData={hi} />;

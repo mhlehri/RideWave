@@ -3,9 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   display: none;
-}
+} */
 body {
   color: #164863;
   background-color: #ddf2fd;
