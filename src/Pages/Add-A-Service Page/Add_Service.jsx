@@ -4,8 +4,11 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import { Add } from "../../Components/Lottie/Lottie";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Add_Service = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "RideWave | Add Service";
   }, []);
@@ -34,7 +37,19 @@ const Add_Service = () => {
     axios
       .post("http://localhost:5000/addServices", userInfo)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Successfully inserted!",
+            color: "#164863",
+            iconColor: "#164863",
+            background: "#ddf2fd",
+            confirmButtonColor: "#164863",
+            text: "Your booking has been added.",
+            icon: "success",
+          });
+          navigate("/ManageServices");
+        }
       })
       .catch((error) => {
         console.log(error.message);

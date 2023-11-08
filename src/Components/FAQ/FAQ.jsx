@@ -28,7 +28,7 @@ export function FAQ() {
             onClick={handleAlwaysOpen}
             className="text-base text-inherit"
           >
-            What is Material Tailwind?
+            How to register as seller?
           </AccordionHeader>
           <AccordionBody className="text-xs text-inherit opacity-90">
             We&apos;re not always in the position that we want to be at.
@@ -42,7 +42,7 @@ export function FAQ() {
             onClick={() => handleOpen(1)}
             className="text-base text-inherit"
           >
-            How to use Material Tailwind?
+            Is any buyer can be seller?
           </AccordionHeader>
           <AccordionBody className="text-xs text-inherit opacity-90">
             We&apos;re not always in the position that we want to be at.
@@ -56,7 +56,7 @@ export function FAQ() {
             onClick={() => handleOpen(2)}
             className="text-inherit text-base"
           >
-            What can I do with Material Tailwind?
+            How can I sell my services here?
           </AccordionHeader>
           <AccordionBody className="text-xs text-inherit opacity-90">
             We&apos;re not always in the position that we want to be at.

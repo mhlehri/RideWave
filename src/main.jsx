@@ -15,6 +15,7 @@ import Manage_Services from "./Pages/Manage-Services Page/Manage_Services";
 import My_schedule from "./Pages/My-schedule Page/My_schedule";
 import Add_Service from "./Pages/Add-A-Service Page/Add_Service.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import UpdateService from "./Pages/Update-Service Page/UpdateService.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/Manage Services",
+        path: "/ManageServices",
         element: (
           <PrivateRoute>
             <Manage_Services></Manage_Services>
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/My Schedules",
+        path: "/MySchedules",
         element: (
           <PrivateRoute>
             <My_schedule></My_schedule>
@@ -64,7 +65,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/Add Services",
+        path: "/Update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateService></UpdateService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AddServices",
         element: (
           <PrivateRoute>
             <Add_Service></Add_Service>

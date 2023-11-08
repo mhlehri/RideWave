@@ -25,13 +25,13 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const navListMenuItems = [
   {
-    title: "My Schedules",
+    title: "MySchedules",
   },
   {
-    title: "Add Services",
+    title: "AddServices",
   },
   {
-    title: "Manage Services",
+    title: "ManageServices",
   },
 ];
 
