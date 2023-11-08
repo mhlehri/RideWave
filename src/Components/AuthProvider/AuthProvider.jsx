@@ -50,12 +50,12 @@ const AuthProvider = ({ children }) => {
       const loggedInUser = { email: userEmail };
 
       if (currentUser) {
-        axios.post("http://localhost:5000/jwt", loggedInUser, {
+        axios.post("https://server-nu-umber.vercel.app/jwt", loggedInUser, {
           withCredentials: true,
         });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedInUser, {
+          .post("https://server-nu-umber.vercel.app/logout", loggedInUser, {
             withCredentials: true,
           })
           .then((response) => console.log(response.data))

@@ -1,8 +1,15 @@
-# React + Vite
+### MY WEBSITE --> RideWave
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## https://ridewave1.netlify.app
 
-Currently, two official plugins are available:
+- In Home page: header, popular services, our features, get out app, FAQ, Contact Form & React leaflet (MAP)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- In Service Page: All services are shown and there has filtering functionality by searching by service name. Here, by clicking on details btn user will redirect to details page and they can book the service.
+
+- Dashboard -> My Schedule -> there has user bookings (user can see his bookings) & also there services if they provide. here he can delete his bookings and his service bookings of other users
+
+- Dashboard -> Add product -> there has a form to add a service. any athentic user can add his service here.
+
+- Dashboard -> Manage service -> there has user(seller) services and user can edit(update) & delete there services
+
+- login & register -> for user authentication

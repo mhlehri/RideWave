@@ -35,7 +35,7 @@ const Add_Service = () => {
     };
     console.log(userInfo);
     axios
-      .post("http://localhost:5000/addServices", userInfo)
+      .post("https://server-nu-umber.vercel.app/addServices", userInfo)
       .then((response) => {
         console.log(response.data);
         if (response.data.insertedId) {

@@ -2,7 +2,7 @@ import { Button, Input, Textarea } from "@material-tailwind/react";
 
 import { useContext } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
-import { Add } from "../../Components/Lottie/Lottie";
+import { Add, DataComing, LoadingData } from "../../Components/Lottie/Lottie";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -17,7 +17,7 @@ const UpdateService = () => {
   const { data: single, isLoading } = useQuery({
     queryFn: async () => {
       return await axios
-        .get(`http://localhost:5000/details/${id}`)
+        .get(`https://server-nu-umber.vercel.app/details/${id}`)
         .then((response) => {
           return response.data;
         });
@@ -42,7 +42,7 @@ const UpdateService = () => {
       serviceDescription,
     };
     axios
-      .patch(`http://localhost:5000/updateServices`, update)
+      .patch(`https://server-nu-umber.vercel.app/updateServices`, update)
       .then((response) => {
         if (response.data.modifiedCount) {
           Swal.fire({
@@ -158,7 +158,7 @@ const UpdateService = () => {
           </div>
         </div>
       ) : (
-        ""
+        <LoadingData></LoadingData>
       )}
     </div>
   );

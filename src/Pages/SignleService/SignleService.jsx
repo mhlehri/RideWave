@@ -30,7 +30,7 @@ const SignleService = () => {
   const { data: single, isLoading } = useQuery({
     queryFn: async () => {
       return await axios
-        .get(`http://localhost:5000/details/${id}`)
+        .get(`https://server-nu-umber.vercel.app/details/${id}`)
         .then((response) => {
           return response.data;
         });
@@ -42,7 +42,7 @@ const SignleService = () => {
     queryFn: async () => {
       return await axios
         .get(
-          `http://localhost:5000/another?email=${single.providerEmail}&name=${single.serviceName}`
+          `https://server-nu-umber.vercel.app/another?email=${single.providerEmail}&name=${single.serviceName}`
         )
         .then((response) => {
           console.log(response.data);
@@ -91,7 +91,7 @@ const SignleService = () => {
       status: "pending",
     };
     axios
-      .post("http://localhost:5000/addbookings", booking)
+      .post("https://server-nu-umber.vercel.app/addbookings", booking)
       .then((response) => {
         if (response) {
           handleOpen();

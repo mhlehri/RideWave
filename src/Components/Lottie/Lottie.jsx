@@ -26,6 +26,7 @@ export const DataComing = () => {
     />
   );
 };
+
 export const Hi = () => {
   return <Lottie style={{ margin: "auto" }} animationData={hi} />;
 };

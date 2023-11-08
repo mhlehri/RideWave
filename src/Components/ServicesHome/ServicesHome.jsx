@@ -7,7 +7,7 @@ import { Skeleton } from "../Skeleton/Skeleton";
 export function ServicesHome() {
   const { data: services, isPending } = useQuery({
     queryFn: async () => {
-      return await fetch("http://localhost:5000/fourServices")
+      return await fetch("https://server-nu-umber.vercel.app/fourServices")
         .then((res) => res.json())
         .then((data) => data);
     },

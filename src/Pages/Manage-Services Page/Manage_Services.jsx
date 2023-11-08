@@ -28,7 +28,7 @@ const Manage_Services = () => {
   const { data: info, isPending } = useQuery({
     queryFn: async () => {
       return await axios
-        .get(`http://localhost:5000/myServices/${user.email}`, {
+        .get(`https://server-nu-umber.vercel.app/myServices/${user.email}`, {
           withCredentials: true,
         })
         .then((response) => {
@@ -55,7 +55,7 @@ const Manage_Services = () => {
       if (result.isConfirmed) {
         const remain = remaining.filter((booking) => booking._id !== id);
         axios
-          .delete(`http://localhost:5000/services/${id}`)
+          .delete(`https://server-nu-umber.vercel.app/services/${id}`)
           .then((res) => {
             console.log(res);
             setRemaining(remain);

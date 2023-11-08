@@ -16,7 +16,7 @@ const Services = () => {
   const [filtered, setFiltered] = useState([]);
   const { data: ses, isPending } = useQuery({
     queryFn: async () => {
-      return await fetch("http://localhost:5000/services", {
+      return await fetch("https://server-nu-umber.vercel.app/services", {
         credentials: "include",
       })
         .then((res) => res.json())

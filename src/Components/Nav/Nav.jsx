@@ -187,8 +187,13 @@ export function NavbarWithMegaMenu() {
           <Typography
             as="a"
             variant="h6"
-            className="mr-4 cursor-pointer py-1.5 lg:ml-2 text-2xl"
+            className="mr-4 cursor-pointer py-1.5 lg:ml-2 text-2xl flex items-center justify-center"
           >
+            <img
+              className="w-16"
+              src="https://www.goteso.com/products/assets/images/clone-scripts/blabla/blabla-right-header.png"
+              alt=""
+            />{" "}
             RideWave
           </Typography>
           <div className="hidden lg:block">

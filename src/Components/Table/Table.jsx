@@ -14,7 +14,7 @@ const MyBooking = () => {
     queryKey: ["booking"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/myBookings/${user.email}`,
+        `https://server-nu-umber.vercel.app/myBookings/${user.email}`,
         { withCredentials: true }
       );
       setRemaining(res.data);
@@ -38,7 +38,7 @@ const MyBooking = () => {
       if (result.isConfirmed) {
         const remain = remaining.filter((booking) => booking._id !== id);
         axios
-          .delete(`http://localhost:5000/bookings/${id}`)
+          .delete(`https://server-nu-umber.vercel.app/bookings/${id}`)
           .then((res) => {
             console.log(res);
             setRemaining(remain);
@@ -145,7 +145,7 @@ const MyPending = () => {
     queryKey: ["pending"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/myPending/${user.email}`,
+        `https://server-nu-umber.vercel.app/myPending/${user.email}`,
         { withCredentials: true }
       );
       setRemaining(res.data);
@@ -160,12 +160,15 @@ const MyPending = () => {
     console.log(status);
 
     try {
-      const res = await axios.patch("http://localhost:5000/updateStatus", {
-        email: user.email,
-        status: newStatus,
-        user: userEmail,
-        service: serviceName,
-      });
+      const res = await axios.patch(
+        "https://server-nu-umber.vercel.app/updateStatus",
+        {
+          email: user.email,
+          status: newStatus,
+          user: userEmail,
+          service: serviceName,
+        }
+      );
       if (res.data.modifiedCount) {
         window.location.reload();
       }
@@ -191,7 +194,7 @@ const MyPending = () => {
       if (result.isConfirmed) {
         const remain = remaining.filter((booking) => booking._id !== id);
         axios
-          .delete(`http://localhost:5000/bookings/${id}`)
+          .delete(`https://server-nu-umber.vercel.app/bookings/${id}`)
           .then((res) => {
             console.log(res);
             setRemaining(remain);
