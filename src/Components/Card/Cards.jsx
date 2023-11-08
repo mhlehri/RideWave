@@ -22,13 +22,13 @@ const Cards = ({ service }) => {
   console.log(_id);
   return (
     <Card className="bg-[#]">
-      <CardHeader floated={false} className="h-32 lg:h-56">
+      <CardHeader floated={false} className=" lg:h-56">
         <img src={serviceImage} alt="profile-picture" />
       </CardHeader>
       <CardBody className="text-center text-[#164863] space-y-4">
         <h4 className="text-lg lg:text-2xl font-bold">{serviceName}</h4>
         <p className=" opacity-70 text-sm md:text-base">{serviceDescription}</p>
-        <div className="px-2 flex justify-between items-center gap-4">
+        <div className="px-2 flex flex-wrap  justify-center md:justify-between items-center gap-4">
           <div className="flex gap-4">
             <img
               src={providerImage}

@@ -26,7 +26,7 @@ const MainLayout = () => {
       setTimeout(() => {
         setLoading(false);
         sessionStorage.setItem("initialLoadDone", "true");
-        setNum(0);
+        setNum(-1);
       }, num);
     }
     console.log(num);

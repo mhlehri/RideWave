@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+import { Button, Option, Select } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext, useState } from "react";
@@ -83,7 +83,7 @@ const MyBooking = () => {
               remaining.length ? (
                 remaining?.map((single, i) => {
                   return (
-                    <tr key={i} className="  bg-blue-50 hover:bg-opacity-80 ">
+                    <tr key={i} className="  bg-blue-100 hover:bg-opacity-20 ">
                       <th
                         scope="row"
                         className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white"
@@ -93,7 +93,15 @@ const MyBooking = () => {
                       <td className="px-6 py-4">{single.date}</td>
                       <td className="px-6 py-4">{single.location}</td>
                       <td className="px-6 py-4">
-                        <span className="bg-orange-200 p-1 rounded-lg">
+                        <span
+                          className={`${
+                            (single.status == "pending" &&
+                              "bg-purple-700/80 text-white") ||
+                            (single.status == "in progress" &&
+                              "bg-yellow-700") ||
+                            (single.status && "bg-lime-800 text-white")
+                          } px-2 py-1 rounded-lg`}
+                        >
                           {single.status}
                         </span>
                       </td>
@@ -116,7 +124,9 @@ const MyBooking = () => {
                 </td>
               )
             ) : (
-              <DataComing></DataComing>
+              <td colSpan={5}>
+                <DataComing></DataComing>
+              </td>
             )}
           </tbody>
         </table>
@@ -211,17 +221,20 @@ const MyPending = () => {
                       <td className="px-6 py-4">{single.date}</td>
                       <td className="px-6 py-4">{single.location}</td>
                       <td className="px-6 py-4">
-                        <span
-                          className={`${
-                            (single.status == "pending" &&
-                              "bg-purple-700/80 text-white") ||
-                            (single.status == "in progress" &&
-                              "bg-yellow-700") ||
-                            (single.status && "bg-lime-800 text-white")
-                          } px-2 py-1 rounded-lg`}
+                        <select
+                          className={` px-2 py-1 rounded-lg text-lg`}
+                          label="Select Version"
                         >
-                          {single.status}
-                        </span>
+                          <option className="bg-purple-700/80 text-white ">
+                            pending
+                          </option>
+                          <option className="bg-yellow-700 ">
+                            in progress
+                          </option>
+                          <option className="bg-lime-800 text-white ">
+                            completed
+                          </option>
+                        </select>
                       </td>
                       <td className="px-6 py-4 text-right">
                         <Button
@@ -240,7 +253,9 @@ const MyPending = () => {
                 </td>
               )
             ) : (
-              <DataComing></DataComing>
+              <td colSpan={5}>
+                <DataComing></DataComing>
+              </td>
             )}
           </tbody>
         </table>

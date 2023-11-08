@@ -8,9 +8,15 @@ import app from "../../assets/Animation - 1699216024327.json";
 import addProduct from "../../assets/kMjupQ85Vn.json";
 import dataComing from "../../assets/dataComing.json";
 import hi from "../../assets/Hi.json";
+import notA from "../../assets/Not.json";
 
 export const Add = () => {
   return <Lottie style={{ margin: "auto" }} animationData={addProduct} />;
+};
+export const Not = () => {
+  return (
+    <Lottie style={{ margin: "auto", width: "200px" }} animationData={notA} />
+  );
 };
 export const DataComing = () => {
   return (
@@ -27,7 +33,7 @@ export const LoadingData = () => {
   return (
     <Lottie
       style={{ width: "400px", margin: "auto", height: "100vh" }}
-      animationData={loading}
+      animationData={dataComing}
     />
   );
 };
@@ -47,5 +53,5 @@ export const Update = () => {
   return <Lottie style={{ margin: "auto" }} animationData={hi} />;
 };
 export const Lo = () => {
-  return <Lottie style={{}} animationData={lo} />;
+  return <Lottie style={{}} animationData={dataComing} />;
 };
