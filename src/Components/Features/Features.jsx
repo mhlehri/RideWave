@@ -13,7 +13,7 @@ const Features = () => {
       {/* features section title*/}
       <div className="text-center space-y-6">
         <h1 className="text-3xl lg:text-5xl font-bold">Our Key Features</h1>
-        <h4 className="lg:text-xl lg:w-1/2 mx-auto opacity-70">
+        <h4 className="lg:text-xl w-3/4 lg:w-1/2 mx-auto opacity-70">
           Discover how RideWave makes your commute seamless and efficient with
           these essential features.
         </h4>

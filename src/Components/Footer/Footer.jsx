@@ -27,7 +27,7 @@ export function Footer() {
               <div key={key} className="w-fit mx-auto text-center">
                 <Typography
                   variant="small"
-                  className="mb-4 font-bold uppercase opacity-50"
+                  className="mb-4 font-bold text-xl uppercase opacity-50"
                 >
                   {title}
                 </Typography>

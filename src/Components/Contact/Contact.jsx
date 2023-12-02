@@ -9,7 +9,7 @@ import {
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 export const Contact = () => {
   return (
-    <div className="my-8 lg:my-40">
+    <div className="my-8 lg:my-40 px-6 lg:px-0">
       <h1 className="mb-5 text-xl lg:text-3xl font-bold">
         Contact us for more
       </h1>

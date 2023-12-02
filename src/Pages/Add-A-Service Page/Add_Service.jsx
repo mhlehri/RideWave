@@ -60,13 +60,13 @@ const Add_Service = () => {
     <div className="my-24 mx-auto px-4">
       <h1 className="my-10 text-4xl text-center">Add Service</h1>
       <div
-        className="flex 
+        className="flex  flex-wrap
       "
       >
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <Add></Add>
         </div>
-        <form className="space-y-4 w-1/2" onSubmit={handleAdd}>
+        <form className="space-y-4 lg:w-1/2" onSubmit={handleAdd}>
           <Input
             type="text"
             required

@@ -34,13 +34,14 @@ const UpdateService = () => {
     const serviceImage = e.target.serviceImage.value;
     const servicePrice = e.target.servicePrice.value;
     const update = {
-      user: user.email,
+      id,
       serviceImage,
       servicePrice,
       serviceArea,
       serviceName,
       serviceDescription,
     };
+    console.log(id);
     axios
       .patch(`https://server-nu-umber.vercel.app/updateServices`, update)
       .then((response) => {
@@ -99,7 +100,7 @@ const UpdateService = () => {
               />
 
               <Input
-                disabled
+                readOnly
                 type="text"
                 name="providerName"
                 className=" !border-[#164863] focus:!border-[#164863] "
@@ -109,7 +110,7 @@ const UpdateService = () => {
                 }}
               />
               <Input
-                disabled
+                readOnly
                 type="text"
                 name="providerEmail"
                 className=" !border-[#164863] focus:!border-[#164863] "

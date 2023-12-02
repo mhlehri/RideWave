@@ -16,6 +16,7 @@ import My_schedule from "./Pages/My-schedule Page/My_schedule";
 import Add_Service from "./Pages/Add-A-Service Page/Add_Service.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UpdateService from "./Pages/Update-Service Page/UpdateService.jsx";
+import Profile from "./Pages/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Add_Service></Add_Service>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile/:user",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
           </PrivateRoute>
         ),
       },

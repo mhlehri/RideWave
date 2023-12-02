@@ -226,7 +226,11 @@ const SignleService = () => {
                       <p className="font-bold text-sm lg:text-base">
                         {single.providerName}
                       </p>
-                      <p className="opacity-70 text-xs text-left">Seller</p>
+                      <p className="opacity-70 text-xs text-left">{`${
+                        single.providerName === user.displayName
+                          ? "You"
+                          : "Seller"
+                      }`}</p>
                     </div>
                   </div>
                   <Rating
@@ -244,10 +248,28 @@ const SignleService = () => {
                   <span className="text-[#0091ff]"> {single.servicePrice}</span>
                 </p>
                 <Button
-                  className="bg-[#164863] w-full"
-                  onClick={() => handleOpen("md")}
+                  className={`bg-[#164863] w-full`}
+                  onClick={
+                    single.providerEmail === user.email
+                      ? () => {
+                          Swal.fire({
+                            title: "Your service",
+                            color: "#164863",
+                            iconColor: "#164863",
+                            background: "#ddf2fd",
+                            confirmButtonColor: "#164863",
+                            text: "You can't book your service",
+                            icon: "warning",
+                          });
+                        }
+                      : () => handleOpen("md")
+                  }
                 >
-                  Book Now
+                  {`${
+                    single.providerEmail === user.email
+                      ? "Your Services"
+                      : "Book Now"
+                  }`}
                 </Button>
               </div>
             </div>
@@ -260,7 +282,8 @@ const SignleService = () => {
                 mount: { scale: 1, y: 0 },
                 unmount: { scale: 0.9, y: -100 },
               }}
-              className="bg-[#bce8ff]"
+              className={`bg-[#bce8ff]
+              ${single.providerEmail === user.email ? "hidden" : "active"}`}
             >
               <DialogHeader className="text-[#164863]">
                 Confirm Purchase

@@ -146,14 +146,23 @@ export function NavbarWithMegaMenu() {
   }, []);
   const profileMenuItems = [
     {
-      label: `${user?.displayName}`,
+      label: (
+        <Link className="w-full" to={`/profile/${user?.displayName}`}>
+          <Button
+            type="button"
+            className="w-full bg-[#164863] flex gap-2 items-center hover:bg-[#1e84bbd3]"
+          >
+            {`${user?.displayName}`}
+          </Button>
+        </Link>
+      ),
       icon: UserCircleIcon,
     },
     {
       label: (
         <Button
           type="button"
-          className="w-full bg-[#164863] flex gap-2 items-center"
+          className="w-full bg-[#164863] flex gap-2 items-center hover:bg-[#1e84bbd3]"
           onClick={() =>
             signO()
               .then(() => {
@@ -227,22 +236,16 @@ export function NavbarWithMegaMenu() {
                     />
                   </Button>
                 </MenuHandler>
-                <MenuList className="p-1">
+                <MenuList className="p-0 bg-[#164863]">
                   {profileMenuItems.map(({ label }) => {
                     return (
-                      <MenuItem
+                      <div
                         key={label}
                         onClick={closeMenu}
-                        className={`flex items-center gap-2 rounded hover:bg-transparent`}
+                        className={`flex items-center rounded hover:bg-transparent`}
                       >
-                        <Typography
-                          as="span"
-                          variant="small"
-                          className="font-normal"
-                        >
-                          {label}
-                        </Typography>
-                      </MenuItem>
+                        {label}
+                      </div>
                     );
                   })}
                 </MenuList>
@@ -279,7 +282,27 @@ export function NavbarWithMegaMenu() {
                 />{" "}
                 <p>{user.displayName}</p>
                 <Link>
-                  <Button className="bg-[#164863]" size="sm" fullWidth>
+                  <Button
+                    onClick={() =>
+                      signO()
+                        .then(() => {
+                          toast.success("Successfully Logged Out!", {
+                            position: "top-center",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                          });
+                        })
+                        .catch((err) => console.log(err))
+                    }
+                    className="bg-[#164863]"
+                    size="sm"
+                    fullWidth
+                  >
                     Sign Out
                   </Button>
                 </Link>

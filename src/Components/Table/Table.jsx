@@ -81,7 +81,7 @@ const MyBooking = () => {
           </thead>
           <tbody>
             {!isPending ? (
-              remaining.length ? (
+              remaining?.length ? (
                 remaining?.map((single, i) => {
                   return (
                     <tr key={i} className="  bg-blue-100 hover:bg-opacity-20 ">
@@ -194,7 +194,9 @@ const MyPending = () => {
       if (result.isConfirmed) {
         const remain = remaining.filter((booking) => booking._id !== id);
         axios
-          .delete(`https://server-nu-umber.vercel.app/bookings/${id}`)
+          .delete(`https://server-nu-umber.vercel.app/bookings/${id}`, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res);
             setRemaining(remain);

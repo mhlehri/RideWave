@@ -1,13 +1,14 @@
 import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import { ErrorP } from "../../Components/Lottie/Lottie";
 
 const Error = () => {
   const navigate = useNavigate();
   return (
-    <div className="space-y-12 h-screen w-screen flex flex-col justify-center items-center">
-      <h1 className="text-6xl dark:text-white">404</h1>
-
-      <p className="text-3xl dark:text-white">Page Not Found...</p>
+    <div className=" h-[80vh] flex flex-col items-center w-screen ">
+      <div className="max-w-[600px]">
+        <ErrorP></ErrorP>
+      </div>
       <Button
         className="bg-[#164863]"
         onClick={() => {

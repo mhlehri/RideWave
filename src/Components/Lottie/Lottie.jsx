@@ -9,9 +9,24 @@ import addProduct from "../../assets/kMjupQ85Vn.json";
 import dataComing from "../../assets/dataComing.json";
 import hi from "../../assets/Hi.json";
 import notA from "../../assets/Not.json";
+import error from "../../assets/Q9VSkHWLGg.json";
 
 export const Add = () => {
-  return <Lottie style={{ margin: "auto" }} animationData={addProduct} />;
+  return (
+    <Lottie
+      style={{
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "0",
+        maxWidth: "350px",
+        maxHeight: "400px",
+      }}
+      animationData={addProduct}
+    />
+  );
+};
+export const ErrorP = () => {
+  return <Lottie style={{ margin: "auto" }} animationData={error} />;
 };
 export const Not = () => {
   return (

@@ -45,7 +45,7 @@ const Manage_Services = () => {
       color: "#164863",
       text: "You won't be able to revert this!",
       icon: "warning",
-      iconColor: "orange",
+      iconColor: "#164863",
       background: "#ddf2fd",
       showCancelButton: true,
       confirmButtonColor: "#164863",
@@ -53,7 +53,7 @@ const Manage_Services = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        const remain = remaining.filter((booking) => booking._id !== id);
+        const remain = remaining?.filter((booking) => booking._id !== id);
         axios
           .delete(`https://server-nu-umber.vercel.app/services/${id}`)
           .then((res) => {
@@ -91,7 +91,7 @@ const Manage_Services = () => {
           }`}
         >
           {!isPending ? (
-            remaining.length ? (
+            remaining?.length ? (
               remaining?.map((myServices, i) => {
                 const {
                   _id,

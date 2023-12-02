@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./../../Components/AuthProvider/AuthProvider";
 import { Hi } from "../../Components/Lottie/Lottie";
+import useAxiosPublic from "./../../../../../assignment12/client12/src/hooks/useAxiosPublic";
 export function SignUp() {
   const { signUp, update, signInG, signO } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosP = useAxiosPublic();
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -66,11 +68,14 @@ export function SignUp() {
           console.log(res);
 
           update(name, photo)
-            .then(
+            .then((res) => {
+              const user = { email, name, photo };
+              console.log(res);
+
               signO()
                 .then(() => navigate("/signIn"))
-                .catch()
-            )
+                .catch();
+            })
             .catch();
         })
         .catch((err) => {
