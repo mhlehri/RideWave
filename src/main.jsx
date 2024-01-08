@@ -17,7 +17,10 @@ import Add_Service from "./Pages/Add-A-Service Page/Add_Service.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UpdateService from "./Pages/Update-Service Page/UpdateService.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import FaqPage from "./Pages/Faq/Faq";
+AOS.init();
 const router = createBrowserRouter([
   {
     path: "/",
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
             <Profile></Profile>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/faq",
+        element: <FaqPage />,
       },
     ],
   },

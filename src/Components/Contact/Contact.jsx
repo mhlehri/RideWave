@@ -1,11 +1,4 @@
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-  Textarea,
-} from "@material-tailwind/react";
+import { Input, Button, Typography, Textarea } from "@material-tailwind/react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 export const Contact = () => {
   return (
@@ -14,7 +7,11 @@ export const Contact = () => {
         Contact us for more
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
-        <form className="mb-2">
+        <form
+          className="mb-2"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+        >
           <div className="mb-1 flex flex-col gap-6 text-[#164863]">
             <Typography variant="h6" className="-mb-3">
               Your Email

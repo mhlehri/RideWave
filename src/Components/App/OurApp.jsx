@@ -2,7 +2,11 @@ import { App } from "../Lottie/Lottie";
 
 const OurApp = () => {
   return (
-    <div className="my-8 lg:my-56 w-3/4 mx-auto lg:w-full">
+    <div
+      className="my-8 lg:my-56 w-3/4 mx-auto lg:w-full"
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+    >
       <h1 className="text-3xl lg:text-5xl font-bold text-center">
         Get Our App
       </h1>

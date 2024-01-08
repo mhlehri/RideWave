@@ -1,18 +1,13 @@
 import { Button } from "@material-tailwind/react";
 
 import { Search } from "../../Components/Search/Search";
-import { useLoaderData, useNavigate } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import Cards from "../../Components/Card/Cards";
 import { useQuery } from "@tanstack/react-query";
-import { reload } from "firebase/auth";
 import { Skeleton } from "../../Components/Skeleton/Skeleton";
 
 const Services = () => {
-  // const services = useLoaderData();
-
   const [filtered, setFiltered] = useState([]);
   const { data: ses, isPending } = useQuery({
     queryFn: async () => {

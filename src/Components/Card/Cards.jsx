@@ -21,7 +21,11 @@ const Cards = ({ service }) => {
   } = service;
   console.log(_id);
   return (
-    <Card className="bg-[#]">
+    <Card
+      className="m-3"
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+    >
       <CardHeader floated={false} className=" lg:h-56">
         <img src={serviceImage} alt="profile-picture" />
       </CardHeader>

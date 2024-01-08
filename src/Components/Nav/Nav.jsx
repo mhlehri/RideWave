@@ -10,7 +10,6 @@ import {
   MenuHandler,
   MenuList,
   Avatar,
-  MenuItem,
 } from "@material-tailwind/react";
 import {
   ChevronDownIcon,
@@ -126,6 +125,17 @@ function NavList() {
           <a className="flex items-center  py-2 hover:bg-transparent">
             Services
           </a>
+        </Typography>
+      </NavLink>
+
+      <NavLink
+        to="/faq"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "underline" : ""
+        }
+      >
+        <Typography as="a" href="#" className="font-medium">
+          <a className="flex items-center  py-2 hover:bg-transparent">Faq</a>
         </Typography>
       </NavLink>
 

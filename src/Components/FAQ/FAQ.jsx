@@ -14,7 +14,11 @@ export function FAQ() {
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-12 my-16 lg:my-56 w-3/4 lg:w-full mx-auto">
+    <div
+      className="flex flex-col lg:flex-row gap-12 my-16 w-3/4 lg:w-full mx-auto"
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+    >
       <div className="lg:w-1/2">
         <Faq></Faq>
       </div>
